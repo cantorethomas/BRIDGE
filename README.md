@@ -1,6 +1,6 @@
 # BRIDGE
 
-**BRIDGE** (Breast cancer Response prediction by Intratumoral subtype DEconvolution) is a framework for deconvolving bulk RNA-seq data into molecular subtype fractions and using these profiles to predict therapy response.
+**BRIDGE** is a framework for deconvolving bulk RNA-seq data into molecular subtype fractions and using these profiles to predict therapy response.
 
 ---
 
