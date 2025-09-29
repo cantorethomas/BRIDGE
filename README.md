@@ -1,6 +1,6 @@
 # BRIDGE
 
-**BRIDGE** is a framework for deconvolving bulk RNA-seq data into molecular subtype fractions and using these profiles to predict therapy response.
+**BRIDGE** is a framework for deconvolving bulk expression data into molecular subtype fractions and using these profiles to predict therapy response.
 
 ---
 
