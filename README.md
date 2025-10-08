@@ -1,7 +1,7 @@
 # BRIDGE
 
 **BRIDGE** is a framework for deconvolving bulk expression data into molecular subtype fractions and using these profiles to predict therapy response.
-All data and code to reproduce the paper can be found at 
+All data and code to reproduce the paper can be found at https://hpc.nih.gov/~Lab_ruppin/BRIDGE_main_scripts.zip.
 
 ---
 
