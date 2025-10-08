@@ -54,9 +54,9 @@ Example:
 ### 2. Deconvolution and response prediction `BRIDGEpredict()`
 
 Please note: BRIDGE predict requires one of the following clinical subtypes to be specified: 
-- 'ERpos_HER2neg' : for neo-adjuvant chemotherapy response score
-- 'HER2pos': for neo-adjuvan anti-HER2 (trastuzumab) + chemotherapy response score
-- 'TNBC' : for neo-adjuvant chemotherapy response score 
+- `ERpos_HER2neg` : for neo-adjuvant chemotherapy response score
+- `HER2pos`: for neo-adjuvan anti-HER2 (trastuzumab) + chemotherapy response score
+- `TNBC` : for neo-adjuvant chemotherapy response score 
   
 ```r
 # Run BRIDGE predictive model for a given clinical subtype
