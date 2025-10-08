@@ -1,6 +1,7 @@
 # BRIDGE
 
 **BRIDGE** is a framework for deconvolving bulk expression data into molecular subtype fractions and using these profiles to predict therapy response.
+All data and code to reproduce the paper can be found at 
 
 ---
 
@@ -52,6 +53,11 @@ Example:
 
 ### 2. Deconvolution and response prediction `BRIDGEpredict()`
 
+Please note: BRIDGE predict requires one of the following clinical subtypes to be specified: 
+- 'ERpos_HER2neg' : for neo-adjuvant chemotherapy response score
+- 'HER2pos': for neo-adjuvan anti-HER2 (trastuzumab) + chemotherapy response score
+- 'TNBC' : for neo-adjuvant chemotherapy response score 
+  
 ```r
 # Run BRIDGE predictive model for a given clinical subtype
 res_pred <- BRIDGEpredict(expr_matrix = expr,
