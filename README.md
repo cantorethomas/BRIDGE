@@ -23,7 +23,7 @@ devtools::install_github("cantorethomas/BRIDGE")
 Please Note: `BRIDGEdeconv()` can be run using 
 - `reference='PAM50'`
 - `reference='TNBC'`
-- `reference='iC10'`
+- `reference='INTCLUST'`
 
 ```r
 library(BRIDGE)
