@@ -20,6 +20,10 @@ devtools::install_github("cantorethomas/BRIDGE")
 ## How to run 
 
 ### 1. Derive subtype abundances `BRIDGEdeconv()`
+Please Note: `BRIDGEdeconv()` can be run using 
+- `reference='PAM50'`
+- `reference='TNBC'`
+- `reference='iC10'`
 
 ```r
 library(BRIDGE)
@@ -61,7 +65,6 @@ Please note: BRIDGE predict requires one of the following clinical subtypes to b
 ```r
 # Run BRIDGE predictive model for a given clinical subtype
 res_pred <- BRIDGEpredict(expr_matrix = expr,
-                          bcor = FALSE,
                           subtype = "ERpos_HER2neg")
 
 # Access results
