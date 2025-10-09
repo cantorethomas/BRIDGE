@@ -87,9 +87,9 @@ The function returns a **list** with two elements:
 
 Example:
 
-| Sample | Score  | Prediction   |
+|        | SCORE  | CLASS        |
 |--------|--------|--------------|
-| P1     | 0.82   | Responder    |
-| P2     | 0.47   | Non-responder|
-| P3     | 0.65   | Responder    |
+| P1     | 0.82   | high         |
+| P2     | 0.47   | low          |
+| P3     | 0.65   | high         |
 
