@@ -3,8 +3,8 @@ test_that("BRIDGEdeconv works with PAM50 reference", {
   data(reference_BRIDGE_PAM50, package = utils::packageName())
   # create synthetic expr matrix with sufficient overlap
   set.seed(3)
-  gsel <- sample(rownames(reference_BRIDGE_PAM50), 600)
-  expr <- matrix(round(runif(600 * 3), 3)*1000, nrow = 600,
+  gsel <- sample(rownames(reference_BRIDGE_PAM50), 500)
+  expr <- matrix(round(runif(500 * 3), 3)*1000, nrow = 500,
                  dimnames = list(gsel, paste0("P", 1:3)))
 
   res <- BRIDGEdeconv(expr_matrix = expr, reference = "PAM50", bcor = FALSE)

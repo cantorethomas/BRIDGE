@@ -4,13 +4,16 @@
 \alias{BRIDGEpredict}
 \title{BRIDGE Response Prediction}
 \usage{
-BRIDGEpredict(expr_matrix, subtype, bcor = T)
+BRIDGEpredict(expr_matrix, subtype, therapy, bcor = T)
 }
 \arguments{
 \item{expr_matrix}{A genes × samples expression matrix (genes in rows, samples in columns).}
 
 \item{subtype}{A character string indicating the breast cancer subtype.
 Must be one of: "ERpos_HER2neg", "HER2pos", "TNBC".}
+
+\item{therapy}{A character string indicating the therapy type for response prediction.
+Must be one of: "CHEMO" for chemotherapy, "IMMUNO" for immunotherapy, "ANTI_HER2" for anti-her2, "ENDO" for endocrine therapy.}
 
 \item{bcor}{Logical; whether to apply ComBat batch correction (default = TRUE).}
 }

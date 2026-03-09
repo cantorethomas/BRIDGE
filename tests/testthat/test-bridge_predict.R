@@ -2,18 +2,19 @@ test_that("BRIDGE_P runs and returns fractions + response_score", {
   # Choose the clinical subtype you know has a model in sysdata.rda.
   # Adjust if your internal models differ.
   subtype <- "ERpos_HER2neg"
+  therapy <- "CHEMO"
 
   # We still need a reference-driven gene set to build expr.
   # Use PAM50 genes to synthesize inputs (deconv uses them internally anyway).
   data(reference_BRIDGE_PAM50, package = utils::packageName())
 
   set.seed(3)
-  gsel <- sample(rownames(reference_BRIDGE_PAM50), 600)
-  expr <- matrix(round(runif(600 * 3), 3)*1000, nrow = 600,
+  gsel <- sample(rownames(reference_BRIDGE_PAM50), 500)
+  expr <- matrix(round(runif(500 * 3), 3)*1000, nrow = 500,
                  dimnames = list(gsel, paste0("P", 1:3)))
 
   # Smoke test: BRIDGEpredict uses internal models (sysdata.rda)
-  res <- BRIDGEpredict(expr_matrix = expr, bcor=F, subtype = subtype)
+  res <- BRIDGEpredict(expr_matrix = expr, bcor=F, subtype = subtype, therapy=therapy)
 
   # structure
   expect_type(res, "list")

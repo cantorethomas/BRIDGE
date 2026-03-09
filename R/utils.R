@@ -22,7 +22,15 @@
 }
 
 .checkSubtype <- function(subtype) {
-  valid <- c("ERpos_HER2neg", "HER2pos", "TNBC")
+  valid <- c("ERpos_HER2neg", "HER2pos", "TNBC", "ERpos")
+  if (length(subtype) != 1 || !subtype %in% valid) {
+    stop("`subtype` must be one of: ", paste(valid, collapse = ", "), ".")
+  }
+  invisible(TRUE)
+}
+
+.checkTherapy <- function(subtype) {
+  valid <- c("CHEMO", "ANTI_HER2", "IMMUNO", "ENDO")
   if (length(subtype) != 1 || !subtype %in% valid) {
     stop("`subtype` must be one of: ", paste(valid, collapse = ", "), ".")
   }

@@ -5,13 +5,13 @@
 #'
 #' @param expr_matrix A genes × samples expression matrix (genes in rows, samples in columns).
 #' @param reference A character string indicating which BRIDGE reference to use.
-#'   Must be one of: "PAM50", "TNBC", "INTCLUST".
+#'   Must be one of: "PAM50", "TNBC".
 #' @param bcor Logical; whether to apply batch correction (default = TRUE).
 #'
 #' @return A matrix of BRIDGE-estimated subtype abundances per sample.
 #' @export
 #'
-BRIDGEdeconv <- function(expr_matrix, reference = c("PAM50", "TNBC", "INTCLUST"), bcor = TRUE) {
+BRIDGEdeconv <- function(expr_matrix, reference = c("PAM50", "TNBC"), bcor = TRUE) {
 
   .checkExprMatrix(expr_matrix)
 
@@ -26,8 +26,6 @@ BRIDGEdeconv <- function(expr_matrix, reference = c("PAM50", "TNBC", "INTCLUST")
     sig <- reference_BRIDGE_PAM50
   } else if (reference == "TNBC") {
     sig <- reference_BRIDGE_TNBC
-  } else if (reference == "INTCLUST") {
-    sig <- reference_BRIDGE_INTCLUST
   }
 
   # check overlap after reference is chosen

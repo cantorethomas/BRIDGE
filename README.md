@@ -57,15 +57,26 @@ Example:
 
 ### 2. Deconvolution and response prediction `BRIDGEpredict()`
 
-Please note: BRIDGE predict requires one of the following clinical subtypes to be specified: 
-- `ERpos_HER2neg` : for neo-adjuvant chemotherapy response score
-- `HER2pos`: for neo-adjuvan anti-HER2 (trastuzumab) + chemotherapy response score
-- `TNBC` : for neo-adjuvant chemotherapy response score 
-  
+> ⚠️ **Research use only.** BRIDGE is intended strictly for research purposes and has not been validated for clinical decision-making.
+
+`BRIDGEpredict()` requires two arguments: `subtype` and `therapy`. The following combinations are currently supported:
+
+| `subtype`       | `therapy`    | Model type    |
+|-----------------|--------------|---------------|
+| `ERpos_HER2neg` | `CHEMO`      | Main          |
+| `ERpos_HER2neg` | `IMMUNO`     | Exploratory   |
+| `ERpos`         | `ENDO`       | Exploratory   |
+| `HER2pos`       | `ANTI_HER2`  | Main          |
+| `TNBC`          | `CHEMO`      | Main          |
+| `TNBC`          | `IMMUNO`     | Exploratory   |
+
+> **Main** models have been trained and validated on multiple cohorts. **Exploratory** models are based on limited data and should be interpreted with caution.
+
 ```r
-# Run BRIDGE predictive model for a given clinical subtype
+# Run BRIDGE predictive model for a given subtype and therapy
 res_pred <- BRIDGEpredict(expr_matrix = expr,
-                          subtype = "ERpos_HER2neg")
+                          subtype     = "ERpos_HER2neg",
+                          therapy     = "CHEMO")
 
 # Access results
 fractions <- res_pred$fractions
@@ -74,22 +85,26 @@ scores    <- res_pred$BRIDGE_SCORE
 head(fractions)
 head(scores)
 ```
+
 The function returns a **list** with two elements:
 
-1. **fractions**  
-   - Same output as `BRIDGEdeconv()` (samples × subtypes matrix).  
-   - Useful for exploring intra-tumoral heterogeneity.  
+1. **`fractions`**  
+   Same output as `BRIDGEdeconv()` (samples × subtypes matrix). Useful for exploring intra-tumoral heterogeneity independently of the predictive model.
 
-2. **BRIDGE_SCORE**  
-   - A two-column data frame:  
-     - **Column 1**: continuous response score (numeric)  
-     - **Column 2**: predicted class label (e.g., `"Responder"`, `"Non-responder"`)  
+2. **`BRIDGE_SCORE`**  
+   A data frame with three columns:
 
-Example:
+   | Column      | Description                                              |
+   |-------------|----------------------------------------------------------|
+   | `SCORE`     | Continuous response score (0–1)                         |
+   | `CLASS`     | Predicted class: `"high"` or `"low"` response           |
+   | `SUBCLASS`  | Quantile-based sub-class (`q1`–`q5`); `NA` if unavailable |
 
-|        | SCORE  | CLASS        |
-|--------|--------|--------------|
-| P1     | 0.82   | high         |
-| P2     | 0.47   | low          |
-| P3     | 0.65   | high         |
+   Example output:
+
+   |        | SCORE | CLASS | SUBCLASS |
+   |--------|-------|-------|----------|
+   | P1     | 0.82  | high  | q5       |
+   | P2     | 0.47  | low   | q3       |
+   | P3     | 0.65  | high  | q4       |
 
